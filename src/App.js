@@ -14,7 +14,7 @@ function App() {
 
   let [user, setUser] = useState({
     name: "Alyssa",
-    avatar: require("../node_modules/fake-avatars/avatars/124.png").default
+    avatar: "https://static.wixstatic.com/media/e1bed3_d3c16166888e4c309faa460fc2293e5e~mv2.png/v1/fill/w_177,h_176,q_90/e1bed3_d3c16166888e4c309faa460fc2293e5e~mv2.png"
   })
 
 
