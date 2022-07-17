@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Navigation from './Navigation'
+import ThemeContext from './ThemeContext'
 
 function App() {
+
+  let [theme, setTheme] = useState({
+    variant: 'dark',
+    toggleTheme: toggleTheme
+  })
+
+  function toggleTheme() {
+    setTheme(theme => (
+      {
+        ...theme,
+        variant: theme.variant === 'dark' ? 'light' : 'dark',
+      }
+    ))
+  }
+
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={theme}>
+      <Navigation />
+    </ThemeContext.Provider>
   );
 }
 
