@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Navigation from './Navigation'
 import ThemeContext from './ThemeContext'
+import UserContext from './UserContext'
+import Home from './Home'
+
 
 function App() {
 
@@ -8,6 +11,12 @@ function App() {
     variant: 'dark',
     toggleTheme: toggleTheme
   })
+
+  let [user, setUser] = useState({
+    name: "Alyssa",
+    avatar: require("../node_modules/fake-avatars/avatars/124.png").default
+  })
+
 
   function toggleTheme() {
     setTheme(theme => (
@@ -19,10 +28,16 @@ function App() {
   }
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <Navigation />
-    </ThemeContext.Provider>
-  );
+    <>
+    <UserContext.Provider value={user}>
+      <ThemeContext.Provider value={theme}>
+        <Navigation />
+      </ThemeContext.Provider>
+      <Home />
+    </UserContext.Provider>
+    </>
+  )
+  
 }
 
 export default App;
